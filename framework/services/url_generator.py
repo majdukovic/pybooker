@@ -12,7 +12,12 @@ class UrlGenerator:
 
     def __init__(self):
         self.urls_map = {
-            'GET_BOOKINGS': 'booking',
+            'POST_TOKEN': 'auth',
+            'GET_BOOKING': 'booking',
+            'POST_BOOKING': 'booking',
+            'PUT_BOOKING': 'booking',
+            'PATCH_BOOKING': 'booking',
+            'DELETE_BOOKING': 'booking'
         }
 
     def get_url(self, api_key):
@@ -24,5 +29,6 @@ class UrlGenerator:
         if api_key not in self.urls_map:
             raise Exception(f'API alias {api_key} is not registered in known endpoints.')
 
-        endpoint = f'https://restful-booker.herokuapp.com/{self.urls_map[api_key]}'
+        # endpoint = f'https://restful-booker.herokuapp.com/{self.urls_map[api_key]}'
+        endpoint = f'http://localhost:3001/{self.urls_map[api_key]}'
         return endpoint
